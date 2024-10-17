@@ -75,13 +75,13 @@ def get_data_from_all_files(folder_path: str, replicate_api: str) -> tuple[str, 
         text += call_tesseract_api(f"{folder_path}/{pdf}", replicate_api)
 
         # call llm
-        llm_output = llm_to_json(text)
+        llm_output = llm_to_json(text, replicate_api, f"{folder_path}/{pdf}")
         full_output.append(llm_output)
 
     return full_output
 
 
-def llm_to_json(text_input: str) -> list:
+def llm_to_json(text_input: str, replicate_api: str, image_file_path: str) -> list:
     """Converts text to JSON using LLM
 
     Args:
@@ -112,26 +112,18 @@ def llm_to_json(text_input: str) -> list:
         "presence_penalty": 1.15,
     }
 
-    # Initialize the replicate client with your API token
-    api = replicate.Client(api_token=os.environ["REPLICATE_API_TOKEN"])
-
-    # Specify the image file path
-    image_file_path = "handwritten_docs/handwriting_20241017_101027_via_10015_io.pdf"
-
     # Variable to store the entire output from the API
     llm_output = ""
 
     # Load the image file
     with open(image_file_path, "rb") as image_file:
         # Send the image to the endpoint along with the input
-        for event in api.stream(
+        for event in replicate_api.stream(
             "meta/meta-llama-3-70b-instruct", input={**input_data, "image": image_file}
         ):
             # Append each chunk of the event's output to the llm_output string
             llm_output += str(event)
 
-    print(f"here is the output from the LLM: {llm_output}")
-    print(f"json.loads: {json.loads(llm_output)}")
     return json.loads(llm_output)
 
 

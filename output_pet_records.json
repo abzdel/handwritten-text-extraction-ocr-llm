@@ -1,0 +1,154 @@
+[
+    {
+        "original_filename": "handwriting_20241017_101008_via_10015_io.jpg",
+        "Patient name": "Bella",
+        "Species": "Dog",
+        "Breed": "Golden Retriever",
+        "Age": "3 years",
+        "Owner name": "John Smith",
+        "Visit date": "April 10, 2023",
+        "Notes": "Bella was brought in today for her annual check-up. No significant issues reported by the owner. vaccinations administered: Rabies and Distemper. The patient also received flea and tick preventative treatment (Frontline). General Physical exam revealed no abnorenalities. Bella's weight is stable at 65 Ibs. Owner mentioned occasional scratching, but no visible signs of irritation or infection were found, Advised to monitor for any changes. Recommended next check-up in one year.",
+        "Procedures": [
+            {
+                "Procedure": "Rabies vaccination",
+                "Cost": 50
+            },
+            {
+                "Procedure": "Distemper vaccination",
+                "Cost": 45
+            },
+            {
+                "Procedure": "Flea and tick treatment",
+                "Cost": 35
+            },
+            {
+                "Procedure": "General check-up",
+                "Cost": 75
+            }
+        ],
+        "Total costs": 205,
+        "Veterinarian name": "Dr. Susan Taylor"
+    },
+    {
+        "original_filename": "handwriting_20241017_101027_via_10015_io.jpg",
+        "Patient name": "Rocky",
+        "Species": "Dog",
+        "Breed": "German Shepherd, Pug",
+        "Age": 5,
+        "Owner name": "Hichael Turner",
+        "Visit date": "June 22, 2023",
+        "Notes": "Routing annual check-up. vaccinations updated (Rabies, Bordetella). General physical examination performed, no health concerns identified. Rocks weight is 85 bs, no changes since last year, Dental heath is good, no cleaning needed at this time. Owner inquired about jpint heaith supplements, recommended gucosaming.",
+        "Procedures": [
+            {
+                "Procedure": "Rabies vaccine",
+                "Cost": 55
+            },
+            {
+                "Procedure": "Bordetella vaccine",
+                "Cost": 40
+            },
+            {
+                "Procedure": "aaneral check-ue",
+                "Cost": 80
+            }
+        ],
+        "Total costs": 175,
+        "Veterinarian name": "Dr. Ernily Davis"
+    },
+    {
+        "original_filename": "handwriting_20241017_101101_via_10015_io.jpg",
+        "patient_name": "Luna",
+        "species": "Cat",
+        "breed": "Domestic Shorthair",
+        "age": "1 years",
+        "owner_name": "Emma wilson",
+        "visit_date": "October 10, 2014",
+        "notes": "Lund was lorovaht in today after vomiting for 1 days And Showing Signs of lethavay, PhySiCAl 2xOm vevealed mild dehydrOtion And Aldomindl discomfort. Blood work performed to wule out Any infections. Resutts show no Significant Alonoemalities. Administered fivids Sulocutaneously. Prescribed Anti-nausea medication (Cevenid) And Advised owner to monitor food intake closely. Will follow uP in 4% hours i\u20ac Symetoms persist.",
+        "procedures": [
+            {
+                "name": "Examination",
+                "cost": 90
+            },
+            {
+                "name": "Bloodwork",
+                "cost": 0
+            },
+            {
+                "name": "Subcutaneous fivids",
+                "cost": 75
+            },
+            {
+                "name": "Medication (Cereniad)",
+                "cost": 15
+            }
+        ],
+        "total_cost": 300,
+        "veterinarian_name": "Ov. Robert Tenkins"
+    },
+    {
+        "original_filename": "handwriting_20241017_101117_via_10015_io.jpg",
+        "Patient name": "Oliver",
+        "Species": "Cat",
+        "Breed": "Maine Coon",
+        "Age": "7 years",
+        "Owner name": "Laura Thompson",
+        "Visit date": "September 1, 2023",
+        "Notes": "Oliver came in for a dental cleaning Today. (fpon physical exam, noticed that (liver's weight had increased by 2 Ibs since the last visit: Discussed weight management shalegies with the ewner, including pertion centrel and increasing playtime. Dental cleaning was performed, and one Tooth was extracted due Tora cavity. Advised follow-up in 6 months for weight check and dental health monitoring.",
+        "Procedures": [
+            {
+                "Procedure": "Dental cleaning",
+                "Cost": "$150"
+            },
+            {
+                "Procedure": "Tooth extraction",
+                "Cost": "$75"
+            }
+        ],
+        "Total costs": "$225",
+        "Veterinarian name": "Dr. Angela Patel"
+    },
+    {
+        "original_filename": "handwriting_20241017_101146_via_10015_io.jpg",
+        "patient_name": "THUMPER",
+        "species": "RABBIT",
+        "breed": "HOLLAND Lor",
+        "age": "3 YEARS",
+        "owner_name": "BENTAMIN HARRIS",
+        "visit_date": "AvausT 12, 2623",
+        "notes": "THUMPER WAS BROUGHT IN FOR A ROUTINE VACCINATION AND CHECK-UP. VACCINATION FOR RABBIT HEMORRHAGIC DISEASE Vitus (RHDV) ADMIMISTERED. GENERAL PHYSICAL EXAM SHOWED NO CONCERNS, BUT THE OWNER MENTIONED NOTICING A SLIGHT DECREASE IW APPETITE OVER THE LAST WEEK. RECOMMENDED KEEPING AN EYE OW HIS EATING HABITS AND ADVISED RETURNING IF THE ISSVE PERSISTS.",
+        "procedures": [
+            {
+                "procedure": "RHDV VACCINATION",
+                "cost": 346
+            },
+            {
+                "procedure": "GENERAL EXAM",
+                "cost": 66
+            }
+        ],
+        "total_costs": 412,
+        "veterinarian_name": "De. MARIA GONZALES"
+    },
+    {
+        "original_filename": "handwriting_20241017_101214_via_10015_io.jpg",
+        "patient_name": "Buddy",
+        "species": "Dog",
+        "breed": "Labrador Retriever",
+        "age": "8 years",
+        "owner_name": "Charles Hiller",
+        "visit_date": "May 20, 2023",
+        "notes": "Buddy was seen today for itchy skin, which has been ongoing for the past month. Exam revealed signs of a mild allergic reaction. Prescribed an antihistamine (Benadryl) and recommended a hypoallergenic diet for the next month. Suggested a follow-up if symptoms persist.",
+        "procedures": [
+            {
+                "procedure": "Allergy exam",
+                "cost": 60
+            },
+            {
+                "procedure": "Antihistamine prescription",
+                "cost": 20
+            }
+        ],
+        "total_costs": 80,
+        "veterinarian_name": "Dr. Jennifer Hall"
+    }
+]
