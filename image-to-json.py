@@ -1,6 +1,8 @@
 import replicate
 import os
 import base64
+import re
+import json
 
 
 def convert_image_to_data_uri(image_path: str) -> str:
@@ -54,7 +56,7 @@ def call_tesseract_api(image_path: str, replicate_api: str) -> str:
     )
 
 
-def get_data_from_all_files(folder_path: str, replicate_api: str) -> str:
+def get_data_from_all_files(folder_path: str, replicate_api: str) -> tuple[str, list]:
     """Calls Tesseract API for all files in folder
 
     Args:
@@ -62,20 +64,75 @@ def get_data_from_all_files(folder_path: str, replicate_api: str) -> str:
 
     Returns:
         str: text
+        list: list of patient records in JSON format
     """
 
-    full_text_file = ""
+    full_output = []
 
     for pdf in os.listdir(folder_path):
-        print(f"here is our pdf: {pdf}")
-        text = call_tesseract_api(f"{folder_path}/{pdf}", replicate_api)
 
-        full_text_file += text
+        text = f"original_filename: {pdf}\n"
+        text += call_tesseract_api(f"{folder_path}/{pdf}", replicate_api)
 
-    return full_text_file
+        # call llm
+        llm_output = llm_to_json(text)
+        full_output.append(llm_output)
+
+    return full_output
 
 
-# convert full_text_file to pdf
+def llm_to_json(text_input: str) -> list:
+    """Converts text to JSON using LLM
+
+    Args:
+        text_input (str): text to pass to LLM - output of our OCR model's reading of the image
+
+    Returns:
+        list: list of patient records in JSON format
+    """
+
+    # Define the input with the detailed prompt
+    input_data = {
+        "top_p": 0.9,
+        "prompt": f"""
+        Process the following text file and extract information to JSON format: \
+        The text contains veterinary records for a single pet. Each record includes details such as:
+        \n original_filename (this is important - include it for every record, even if other fields are missing)
+        \n- Patient name\n- Species\n- Breed\n- Age\n- Owner name\n- Visit date\n- Notes\n- Procedures with costs\n
+        - Total costs\n- Veterinarian name\n\n
+        
+        Please ensure the JSON output includes fields for each of the above details and handle variations in formatting or potential typos.
+        If a field cannot be found, this is okay - just fill it in with null.
+        Do not give any commentary or further wording. Nothing like "here is the output" - I only want back the json output of my request.
+
+        Here is the text: {text_input}
+        """,
+        "min_tokens": 0,
+        "temperature": 0.6,
+        "presence_penalty": 1.15,
+    }
+
+    # Initialize the replicate client with your API token
+    api = replicate.Client(api_token=os.environ["REPLICATE_API_TOKEN"])
+
+    # Specify the image file path
+    image_file_path = "handwritten_docs/handwriting_20241017_101027_via_10015_io.pdf"
+
+    # Variable to store the entire output from the API
+    llm_output = ""
+
+    # Load the image file
+    with open(image_file_path, "rb") as image_file:
+        # Send the image to the endpoint along with the input
+        for event in api.stream(
+            "meta/meta-llama-3-70b-instruct", input={**input_data, "image": image_file}
+        ):
+            # Append each chunk of the event's output to the llm_output string
+            llm_output += str(event)
+
+    print(f"here is the output from the LLM: {llm_output}")
+    print(f"json.loads: {json.loads(llm_output)}")
+    return json.loads(llm_output)
 
 
 def main() -> None:
@@ -85,10 +142,15 @@ def main() -> None:
     replicate_api = replicate.Client(api_token=os.environ["REPLICATE_API_TOKEN"])
 
     # get data from all files in folder
-    full_text_file = get_data_from_all_files("handwritten_docs/images", replicate_api)
+    full_json_file = get_data_from_all_files("handwritten_docs/images", replicate_api)
 
-    with open("full_text.txt", "w") as text_file:
-        text_file.write(full_text_file)
+    # Optionally write the full text to a file
+    # with open("full_text.txt", "w") as text_file:
+    #     text_file.write(full_text_file)
+
+    # Write the full JSON file to disk
+    with open("output_pet_records.json", "w") as json_file:
+        json.dump(full_json_file, json_file, indent=4)
 
 
 if __name__ == "__main__":
