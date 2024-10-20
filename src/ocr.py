@@ -1,7 +1,7 @@
 import os
 import logging
-from image_utils import convert_image_to_data_uri
-from llm import llm_to_json
+from src.image_utils import convert_image_to_data_uri
+from src.llm import llm_to_json
 
 # Configure logging
 logging.basicConfig(

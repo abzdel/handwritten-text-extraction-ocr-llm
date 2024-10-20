@@ -1,9 +1,9 @@
 import os
 import json
 import replicate
-from image_utils import convert_image_to_data_uri
-from ocr import call_tesseract_api, get_data_from_all_files
-from llm import llm_to_json
+from src.image_utils import convert_image_to_data_uri
+from src.ocr import call_tesseract_api, get_data_from_all_files
+from src.llm import llm_to_json
 
 
 def main() -> None:
