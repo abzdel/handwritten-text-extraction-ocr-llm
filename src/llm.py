@@ -1,11 +1,6 @@
 import json
-import logging
 import os
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+from src.logging_config import logging
 
 
 def llm_to_json(text_input: str, replicate_api, image_file_path: str) -> list:

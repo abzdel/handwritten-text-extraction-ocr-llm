@@ -1,12 +1,8 @@
 import os
-import logging
 from src.image_utils import convert_image_to_data_uri
 from src.llm import llm_to_json
+from src.logging_config import logging
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
 
 
 def call_tesseract_api(image_path: str, replicate_api) -> str:

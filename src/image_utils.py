@@ -1,11 +1,6 @@
 import base64
-import logging
 import os
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+from src.logging_config import logging
 
 
 def validate_image_path(image_path: str) -> None:
