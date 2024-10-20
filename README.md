@@ -2,8 +2,7 @@
 
 # Handwritten Vet Notes - Text Extraction
 
-
-Example of using OCR model and LLM to parse out unstructured notes into JSON format.
+This project demonstrates the use of an OCR model and a LLM to convert unstructured handwritten veterinary notes into a structured JSON format. The OCR component extracts text from images of the notes, while the LLM processes this text to ensure proper formatting and organization. Both models are hosted on Replicate, providing easy API access for text extraction and processing. This solution aims to streamline the management of veterinary records, making it easier to analyze and retrieve important information.
 
 
 ## Architectural Diagram
@@ -43,6 +42,8 @@ Example of using OCR model and LLM to parse out unstructured notes into JSON for
    export REPLICATE_API_TOKEN=r8_xxxxxxxxx
    ```
 
+1. (optional) replace **handwritten_docs/** directory with your own documents
+
 1. If you have a folder of pdfs (if they haven't been converted to images yet), you need to run pdf_to_image first.
    ```python
    python src/pdf_to_image.py
@@ -52,6 +53,8 @@ Example of using OCR model and LLM to parse out unstructured notes into JSON for
    ```python
    python src/main.py
    ```
+
+After this, open up **output_pet_records.json**, where we should see a more structured representation of the doctor's notes.
 
 
 ## Limitations
