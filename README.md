@@ -52,3 +52,21 @@ Example of using OCR model and LLM to parse out unstructured notes into JSON for
    ```python
    python src/main.py
    ```
+
+
+## Limitations
+
+- The handwritten documents used in this project are **computer-generated**, not actual handwritten documents. This could limit the OCR model's effectiveness when applied to real-world handwriting, which tends to be more varied and harder to recognize.
+- I only tested the solution on **a small set of documents**, meaning that the results may not generalize well to a broader set of documents with different formats, fonts, or languages.
+- The **LLM processing** of the text extracted by OCR is currently based on assumptions about the structure of the data. If documents deviate significantly from these assumptions, the LLM might not produce reliable JSON output.
+- **Performance constraints**: The process involves multiple API calls to Replicate, which can introduce latency, especially when dealing with large documents or images.
+- The **lack of noise or distortion** in the test documents makes it difficult to assess how well the OCR handles real-world issues like smudges, tears, or poor image quality.
+
+## Next Steps
+
+- **Fine-tuning the OCR model** with a larger, more diverse set of real handwritten documents would improve its accuracy and robustness to real-world scenarios.
+- **Developing pre-processing techniques**: Implementing additional image processing techniques (like noise reduction, contrast adjustment, etc.) could help the OCR model perform better with low-quality or noisy images.
+- **Adding more test cases**: We could build a more comprehensive suite of tests to cover edge cases and validate different types of input, ensuring both the OCR and LLM can handle unexpected inputs and document formats.
+- **Performance optimization**: Looking into optimizing the workflow to reduce the latency caused by multiple API calls, such as by exploring local models or batching API requests, could improve performance.
+- **Post-processing the LLM output**: Adding layers of post-processing to the LLM's output could help ensure the output is always structured as expected.
+
